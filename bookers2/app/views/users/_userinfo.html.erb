@@ -1,0 +1,30 @@
+<div class="col-md-3">
+    <h2>User info</h2>
+
+    <%= image_tag user.get_profile_image("100x100") if user.get_profile_image("100x100").present? %>
+
+    <div class=" d-flex justify-content-between pt-3 border-top">
+      <p class="ml-2"><strong>name</strong></p>
+      <p class="mr-4"><strong><%= user.name %></strong></p>
+    </div>
+
+    <div class="pt-3 d-flex justify-content-between  border-top">
+      <p class="ml-2 pb-3"><strong>introduction</strong></p>
+      <p class="ml-2"><strong><%= user.introduction %></strong></p>
+    </div>
+    <a class="btn btn-outline-secondary btn-block" href="/users/<%= current_user.id %>/edit" ><i class="fas fa-user-cog"></i></a>
+
+    <h2 class="mt-3">New book</h2>
+
+    <%= form_with model: book,url: '/books',method: :post,local: true do |f| %>
+
+      <p>Title</p>
+      <%= f.text_field :title,value: "" %>
+
+      <p class="mt-2">Opinion</p>
+      <%= f.text_area :body, value: "" %>
+
+      <%= f.submit "Create Book", class: "btn btn-success mt-2" %>
+
+    <% end %>
+</div>

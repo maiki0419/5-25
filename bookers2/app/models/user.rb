@@ -8,7 +8,7 @@ class User < ApplicationRecord
  has_many :books,dependent: :destroy
 
  def after_sign_in_path_for
-  user_path(current_user.id)
+    user_path(current_user.id)
  end
 
  def get_profile_image(size)
