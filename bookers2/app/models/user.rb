@@ -6,10 +6,9 @@ class User < ApplicationRecord
 
  has_one_attached :profile_image
  has_many :books,dependent: :destroy
+ validates :name,presence: true,length: {in: 2..20} 
+ validates :introduction,length: {maximum: 50}
 
- def after_sign_in_path_for
-    user_path(current_user.id)
- end
 
  def get_profile_image(size)
    unless profile_image.attached?
